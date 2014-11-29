@@ -1,0 +1,15 @@
+{
+  "name": "kafka-node-manager",
+  "description": "Job manager to use with kafka-node",
+  "version": "1.0.0",
+  "scripts": {
+      "test": "make test"
+  },
+  "dependencies": {
+    "kafka-node": "^0.2.11",
+    "log4js": "*",
+    "underscore": "*"
+  },
+  "devDependencies": {
+  }
+}
