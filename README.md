@@ -1,7 +1,48 @@
 Kafka-node-manager
 ==================
 
-Kafka-node-manager performs management of kafka-node processing jobs and ensures that messages are only committed when the job completes
+Kafka-node-manager performs management of kafka-node processing jobs and ensures that messages are only committed when the job completes.
+
+Operation
+=========
+
+KafkaJobManager reads and commits messages on behalf of the client. The jobmmanager will call the provided client function with the message read from kafka. 
+The client can throttle the number of inflight messages and optionally provide callbacks for success and failure and a topic to send failed messages to.
+
+    var jobManager = new KafkaJobManager(clientFunction, zkConnection, consumerGroup, topic, inflightMessages, notifySuccess, notifyFailure, deadLetterTopic);
+
+Use of [pm2](https://github.com/Unitech/pm2) to manage the execution of your client process is strongly recommended as there are circumstances where a forced reconnect is required.
+
+Installation
+============
+
+    npm install git+https://github.com/jezzalaycock/kafka-node-manager.git
+    
+
+Example Usage
+=============
+
+    var kjm = require('kafka-node-manager'),
+    KafkaJobManager = kjm.KafkaJobManager;
+    
+    var jobManager = new KafkaJobManager(onRead, 'localhost:2181', "consumerId", 'test', 1000, notifySuccess, notifyFailure, 'deadLetter');
+    var onRead = function (obj, messageId, cb) { 
+        console.log(JSON.stringify(obj));
+        // do something if ok cb()
+        // if (err) cb(err)
+        cb();
+     };
+     
+     var notifySuccess = function () { };
+     var notifyFailure = function () { };
+
+    
+    jobManager.excute();
+
+Limitations
+===========
+
+Only a single topic can be specified.
 
 
 # LICENSE - "MIT"
