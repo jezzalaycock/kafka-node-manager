@@ -1,7 +1,7 @@
 {
   "name": "kafka-node-manager",
   "description": "Job manager to use with kafka-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "test": "make test"
   },
@@ -11,5 +11,9 @@
     "log4js": "*",
     "underscore": "*"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "repository": {
+        "type": "git",
+        "url": "git@github.com:jezzalaycock/kafka-node-manager.git"
+    }
 }
