@@ -16,7 +16,7 @@ Use of [pm2](https://github.com/Unitech/pm2) to manage the execution of your cli
 Installation
 ============
 
-    npm install git+https://github.com/jezzalaycock/kafka-node-manager.git
+    npm install kafka-node-manager
     
 
 Example Usage
