@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "async": "^0.9.0",
-    "kafka-node": "^0.2.11",
+    "kafka-node": "^0.2.25",
     "log4js": "*",
     "underscore": "*"
   },
